@@ -10,6 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4 
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "gtr3base"
+          git config --global user.email "aloxaryabov@gmail.com"
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:

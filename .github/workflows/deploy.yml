@@ -12,13 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4 
         with:
-          persist-credentials: false
           fetch-depth: 0
 
       - name: Configure Git
         run: |
           git config --global user.name "gtr3base"
           git config --global user.email "aloxaryabov@gmail.com"
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf "https://github.com"
 
       - name: Install Node.js
         uses: actions/setup-node@v3

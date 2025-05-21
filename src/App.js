@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Basket from './components/Basket';
 import Product from './components/Product';
 
 function App() {
@@ -8,6 +10,13 @@ function App() {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
+  const removeFromCart = (index) => {
+    const newCart = [...cartItems];
+    newCart.splice(index, 1);
+    setCartItems(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  };
 
   const products = [
     { id: 1, name: 'Wireless Headphones', price: 99.99, image: 'https://jblstore.com.ph/cdn/shop/files/Tune720BT_Blue_1.png?v=1747046882' },
@@ -23,15 +32,32 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(newCart));
   };
 
+  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+
   return (
-    <div className="App">
-      <Navbar cartCount={cartItems.length} />
-      <div className="products-grid">
-        {products.map((product) => (
-          <Product key={product.id} product={product} addToCart={addToCart} />
-        ))}
+    <Router>
+      <div className="App">
+        <Navbar cartCount={cartItems.length} />
+        
+        <Routes>
+          <Route path="/ecommerce-landing" element={
+            <div className="products-grid">
+              {products.map((product) => (
+                <Product key={product.id} product={product} addToCart={addToCart} />
+              ))}
+            </div>
+          } />
+          
+          <Route path="/basket" element={
+            <Basket 
+              cartItems={cartItems} 
+              removeFromCart={removeFromCart}
+              cartTotal={cartTotal}
+            />
+          } />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

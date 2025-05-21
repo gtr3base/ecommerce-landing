@@ -53,6 +53,7 @@ function App() {
               cartItems={cartItems} 
               removeFromCart={removeFromCart}
               cartTotal={cartTotal}
+              addToCart={addToCart}
             />
           } />
         </Routes>

@@ -14,6 +14,7 @@ function App() {
     { id: 2, name: 'Smart Watch', price: 199.99, image: 'https://www.istudiosg.com/cdn/shop/files/Apple_Watch_Series_10_42mm_GPS_Silver_Aluminum_Sport_Band_Denim_PDP_Image_Position_1__GBEN.jpg?v=1727185024' },
     { id: 3, name: 'Bluetooth Speaker', price: 59.99, image: 'https://www.jbhifi.com.au/cdn/shop/products/597794-Product-0-I-637945070583397301.jpg?v=1658874344' },
     { id: 4, name: 'Laptop', price: 899, image: 'https://my-store.msi.com/cdn/shop/files/M15B13M_1_869x869.png?v=1712221181'},
+    { id: 5, name: 'Keyboard', price: 78.99, image: 'https://www.electroniksindia.com/cdn/shop/files/sk61-61-key-mechanical-keyboard-usb-wired-led-backlit-axis-gaming-mechanical-keyboard-gateron-optical-switches-for-desktop-by-electroniksindia-262_1800x1800.webp?v=1739154267'},
   ];
 
   const addToCart = (product) => {
